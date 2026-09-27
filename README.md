@@ -1,4 +1,4 @@
-# Novictium
+# AgroTax
 
 ### Integrantes
 - **Victor**
@@ -11,27 +11,39 @@
 
 ## Sobre o Projeto
 
-O **Novictium** é uma plataforma web criada para ajudar pessoas que enfrentam各种de vícios — como álcool, drogas, jogos eletrônicos, aposta compulsiva, entre outros — a darem o primeiro passo em direção à recuperação.
+O **AgroTax** é uma plataforma web criada para auxiliar produtores rurais, cooperativas, contadores e profissionais do agronegócio brasileiro na **estimativa da carga tributária** de operações envolvendo produtos agrícolas.
 
-A ideia central é simples e poderosa: por meio de uma **Landing Page** acessível e acolhedora, qualquer pessoa que esteja sofrendo com um vício ou conheça alguém nessa situação pode preencher um formulário rápido e entrar em contato com profissionais e instituições especializadas em tratamento e acolhimento.
+A ideia central é simples: por meio de uma **calculadora tributária online**, o usuário informa o produto, o valor da operação, o regime tributário e o tipo de operação. O sistema então calcula uma estimativa dos principais tributos aplicáveis e apresenta o resultado de forma clara.
 
-O **Novictium** não substitui atendimento profissional, mas funciona como uma **ponte de conexão** entre quem precisa de ajuda e quem está preparado para oferecê-la.
+O **AgroTax** também disponibiliza um **Guia Fiscal**, com explicações sobre os principais tributos, e uma página **Sobre**, apresentando as informações e a base legal utilizada pelo sistema.
 
 **Principais objetivos:**
-- Democratizar o acesso a informações sobre tratamento de vícios.
-- Reduzir a barreira da vergonha e do silêncio ao facilitar o contato inicial.
-- Conectar leads interessados a profissionais qualificados e instituições de apoio.
-- Oferecer um canal simples, rápido e seguro para quem busca ajuda.
+- Facilitar a estimativa de tributos em operações do agronegócio.
+- Reunir informações tributárias em uma interface simples.
+- Considerar diferentes produtos e tipos de operações agrícolas.
+- Considerar os regimes tributários disponíveis no sistema.
+- Aplicar as regras de isenções e benefícios fiscais cadastrados.
+- Apresentar o valor estimado dos tributos e da carga tributária.
+- Servir como ferramenta de referência antes da consulta a um profissional especializado.
+
+> Os resultados apresentados pelo AgroTax são **estimativas** e não substituem a análise de um contador ou especialista tributário.
 
 ---
 
 ## Funcionalidades
 
-- **Landing Page responsiva** com linguagem acessível e acolhedora.
-- **Formulário de captura de leads** com validação em tempo real.
-- **API RESTful** para cadastro, validação e armazenamento de contatos.
-- **Banco de dados SQLite** para persistência leve e local dos dados.
-- **Painel de listagem** para visualização dos leads cadastrados.
+- **Calculadora tributária online** para operações do agronegócio.
+- **Seleção de produtos agrícolas** para realização dos cálculos.
+- **Cálculo de ICMS, IPI, PIS/COFINS, Funrural e SENAR** conforme as regras cadastradas.
+- **Aplicação de isenções e benefícios fiscais** previstos nas regras do sistema.
+- **Seleção do regime tributário**, entre Simples Nacional, Lucro Presumido e Lucro Real.
+- **Seleção do tipo de operação**, como compra, venda, importação e exportação.
+- **Exibição do valor líquido estimado** após os tributos.
+- **Exibição da carga tributária percentual**.
+- **Guia Fiscal** com explicações sobre os tributos.
+- **Página Sobre** com informações sobre o projeto e a base legal utilizada.
+- **API RESTful** para processamento das simulações.
+- **Banco de dados SQLite** para armazenamento dos produtos, regras e simulações.
 
 ---
 
@@ -56,160 +68,35 @@ O **Novictium** não substitui atendimento profissional, mas funciona como uma *
 ## Estrutura do Projeto
 
 ```text
-novictium/
+agrotax/
 ├── api/                          # Servidor Backend em Node.js
-│   ├── db/                       # Banco de dados SQLite (criado em runtime)
-│   │   └── landing.db            # Arquivo da base de dados local
+│   ├── db/                       # Banco de dados SQLite
+│   │   └── agrotax.db            # Arquivo da base de dados local
 │   ├── src/
 │   │   ├── config/
 │   │   │   └── conexaoBanco.js   # Inicialização e conexão do SQLite
 │   │   ├── controladores/
-│   │   │   └── leadControlador.js# Regras de negócio da API
+│   │   │   └── calculadoraControlador.js # Regras de cálculo tributário
 │   │   ├── rotas/
-│   │   │   └── leadRotas.js      # Endpoints da aplicação
+│   │   │   └── calculadoraRotas.js # Endpoints da calculadora
 │   │   ├── utilitarios/
-│   │   │   └── validadores.js    # Sanitização e validação dos inputs
+│   │   │   ├── calculadoraTributaria.js # Cálculos dos tributos
+│   │   │   └── validadores.js    # Validação dos dados recebidos
 │   │   ├── app.js                # Configuração do Express e middlewares
 │   │   └── server.js             # Inicialização do servidor
 │   ├── .env                      # Variáveis de ambiente
-│   ├── iniciarBanco.js           # Criação da tabela de leads
+│   ├── iniciarBanco.js           # Criação das tabelas do banco
 │   └── package.json              # Dependências e scripts
 │
-├── frontend/                     # Interface Web (Landing Page)
+├── frontend/                     # Interface Web
 │   ├── css/
 │   │   └── estilo.css            # Estilos adicionais
 │   ├── js/
-│   │   └── app.js                # Lógica client-side
-│   └── index.html                # Estrutura visual da Landing Page
+│   │   ├── app.js                # Lógica principal do site
+│   │   └── calculadora.js        # Lógica da calculadora tributária
+│   ├── index.html                # Página inicial e calculadora
+│   ├── guia-fiscal.html          # Guia Fiscal
+│   └── sobre.html                # Página Sobre
 │
 ├── .gitignore                    # Arquivos ignorados pelo Git
 └── README.md                     # Este arquivo
-```
-
----
-
-## Modelagem do Banco de Dados (SQLite)
-
-O banco de dados é inicializado automaticamente ao iniciar a aplicação.
-
-### Tabela `leads`
-
-```sql
-CREATE TABLE IF NOT EXISTS leads (
-    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome_completo       TEXT    NOT NULL,
-    email               TEXT    NOT NULL,
-    telefone_whatsapp   TEXT    NOT NULL,
-    mensagem            TEXT    DEFAULT NULL,
-    data_cadastro       TEXT    DEFAULT (datetime('now','localtime')),
-    status_atendimento  TEXT    DEFAULT 'novo'
-                                CHECK(status_atendimento IN ('novo','contatado','convertido','perdido'))
-);
-
-CREATE INDEX IF NOT EXISTS idx_leads_email ON leads(email);
-CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status_atendimento);
-```
-
----
-
-## Endpoints da API
-
-| Método | Endpoint | Descrição | Payload (Body) |
-|---|---|---|---|
-| `GET` | `/` | Página inicial da Landing Page | — |
-| `GET` | `/api/health` | Verificação de saúde da API | — |
-| `POST` | `/api/leads` | Cadastra um novo lead | JSON (nome, email, telefone, mensagem) |
-| `GET` | `/api/leads` | Lista todos os leads cadastrados | — |
-
-### Exemplo de Requisição `POST /api/leads`
-
-**Body (JSON):**
-```json
-{
-  "nome_completo": "Maria Silva",
-  "email": "maria.silva@exemplo.com",
-  "telefone_whatsapp": "(11) 98888-7777",
-  "mensagem": "Gostaria de saber mais sobre tratamento."
-}
-```
-
-**Resposta de Sucesso (HTTP 201):**
-```json
-{
-  "sucesso": true,
-  "mensagem": "Lead cadastrado com sucesso!"
-}
-```
-
-**Resposta de Erro de Validação (HTTP 422):**
-```json
-{
-  "sucesso": false,
-  "mensagem": "E-mail inválido.",
-  "erros": [
-    "Informe um endereço de e-mail válido."
-  ]
-}
-```
-
----
-
-## Como Executar o Projeto
-
-### Pré-requisitos
-- **Node.js** (v18 ou superior) e **npm** instalados.
-- **Git** instalado.
-
-**Para instalar o Node.js e Git no Ubuntu/Debian:**
-```bash
-sudo apt update
-sudo apt install -y nodejs npm git
-```
-
-### Iniciar o Projeto
-
-1. Clone o repositório:
-   ```bash
-   git clone <url-do-repositorio>
-   ```
-
-2. Navegue até a pasta `api` e instale as dependências:
-   ```bash
-   cd novictium/api
-   npm install
-   ```
-
-3. Inicie o servidor:
-   ```bash
-   npm run dev
-   ```
-
-4. Acesse no navegador:
-   - **Landing Page:** [http://localhost:3000/](http://localhost:3000/)
-   - **Health Check:** [http://localhost:3000/api/health](http://localhost:3000/api/health)
-
-### Parar o Servidor
-
-Pressione **`Ctrl` + `C`** no terminal.
-
-Se a porta 3000 estiver ocupada:
-```bash
-sudo fuser -k 3000/tcp
-# ou
-npx kill-port 3000
-```
-
----
-
-## Segurança e Boas Práticas
-
-- **Prepared Statements:** Consultas preparadas via `better-sqlite3` prevenindo ataques de SQL Injection.
-- **Sanitização de Entradas:** Limpeza de dados com a biblioteca `validator` para evitar XSS.
-- **Proteção contra Payload Abusivo:** Middleware configurado com limite de 10KB por requisição.
-- **Respostas Padronizadas:** Códigos HTTP semânticos (200, 201, 400, 422, 500).
-
----
-
-## Licença
-
-Projeto desenvolvido para fins educacionais e acadêmicos. Sinta-se à vontade para utilizar como base para seus próprios aprendizados.
