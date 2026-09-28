@@ -1,1 +1,34 @@
 https://www.figma.com/make/QlM3nANignFY5emoTGwmQS/Calculadora-de-Impostos-Agron%C3%B4micos?t=dSo1sYaOika5Gf9C-1
+
+
+Finalidades dos usuários no cadastro
+
+No cadastro, o usuário pode informar sua finalidade de uso da plataforma, permitindo identificar o contexto em que utilizará o AgroTax.
+Finalidade	Descrição
+Produtor Rural	Utilizar a calculadora para estimar os tributos incidentes sobre suas operações agrícolas.
+Cooperativa	Realizar simulações tributárias relacionadas às operações de compra, venda e comercialização de produtos agrícolas.
+Contador	Utilizar a plataforma como ferramenta de apoio para realizar estimativas tributárias de operações de seus clientes.
+Profissional do Agronegócio	Consultar informações fiscais e realizar simulações relacionadas às atividades do setor.
+Estudante/Pesquisador	Utilizar o sistema para estudos, pesquisas e compreensão da tributação aplicada ao agronegócio.
+Consulta/Simulação	Utilizar a plataforma para obter uma estimativa tributária antes de uma operação ou consulta profissional.
+Outro	Informar outra finalidade que não esteja contemplada nas opções anteriores.
+Como ficaria no cadastro
+
+Finalidade de uso:
+
+    ( ) Produtor Rural
+
+    ( ) Cooperativa
+
+    ( ) Contador
+
+    ( ) Profissional do Agronegócio
+
+    ( ) Estudante/Pesquisador
+
+    ( ) Consulta/Simulação
+
+    ( ) Outro
+
+Observação: essa informação pode ser utilizada apenas para identificar o perfil e a finalidade de uso do usuário. Os cálculos fornecidos pelo AgroTax continuam sendo estimativas e não substituem a análise de um profissional tributário.
+
