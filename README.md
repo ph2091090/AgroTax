@@ -1,6 +1,7 @@
-# Novictium
+# AgroTax
 
 ### Integrantes
+
 - **Victor**
 - **Pedro**
 - **Tauã**
@@ -11,205 +12,132 @@
 
 ## Sobre o Projeto
 
-O **Novictium** é uma plataforma web criada para ajudar pessoas que enfrentam各种de vícios — como álcool, drogas, jogos eletrônicos, aposta compulsiva, entre outros — a darem o primeiro passo em direção à recuperação.
+O **AgroTax** é uma plataforma web criada para auxiliar produtores rurais, cooperativas, contadores e profissionais do agronegócio brasileiro na **estimativa da carga tributária** de operações envolvendo produtos agrícolas.
 
-A ideia central é simples e poderosa: por meio de uma **Landing Page** acessível e acolhedora, qualquer pessoa que esteja sofrendo com um vício ou conheça alguém nessa situação pode preencher um formulário rápido e entrar em contato com profissionais e instituições especializadas em tratamento e acolhimento.
+A ideia central é simples: por meio de uma **calculadora tributária online**, o usuário informa o produto, o valor da operação, o regime tributário e o tipo de operação. O sistema então realiza uma estimativa dos principais tributos cadastrados e apresenta o resultado de forma organizada.
 
-O **Novictium** não substitui atendimento profissional, mas funciona como uma **ponte de conexão** entre quem precisa de ajuda e quem está preparado para oferecê-la.
+Além da calculadora tributária, o **AgroTax** possui um canal de contato para que usuários possam enviar mensagens para a equipe do projeto. As mensagens recebidas são armazenadas no banco de dados e podem ser encaminhadas por e-mail.
+
+O sistema foi desenvolvido com foco em organização, facilidade de uso e integração entre frontend, backend e banco de dados.
+
+> Os resultados apresentados pelo AgroTax são **estimativas** e não substituem a análise de um contador ou especialista tributário.
 
 **Principais objetivos:**
-- Democratizar o acesso a informações sobre tratamento de vícios.
-- Reduzir a barreira da vergonha e do silêncio ao facilitar o contato inicial.
-- Conectar leads interessados a profissionais qualificados e instituições de apoio.
-- Oferecer um canal simples, rápido e seguro para quem busca ajuda.
+
+- Facilitar a estimativa de tributos em operações do agronegócio.
+- Reunir informações tributárias em uma interface simples.
+- Permitir a seleção de produtos agrícolas cadastrados no sistema.
+- Considerar diferentes regimes tributários e tipos de operação.
+- Calcular uma estimativa dos tributos cadastrados.
+- Apresentar o valor total estimado dos tributos.
+- Apresentar o valor líquido estimado da operação.
+- Apresentar a carga tributária percentual.
+- Armazenar simulações realizadas no banco de dados.
+- Disponibilizar um canal de contato para os usuários.
+- Enviar as mensagens recebidas pelo formulário para o e-mail configurado no sistema.
 
 ---
 
 ## Funcionalidades
 
-- **Landing Page responsiva** com linguagem acessível e acolhedora.
-- **Formulário de captura de leads** com validação em tempo real.
-- **API RESTful** para cadastro, validação e armazenamento de contatos.
-- **Banco de dados SQLite** para persistência leve e local dos dados.
-- **Painel de listagem** para visualização dos leads cadastrados.
+- **Landing Page responsiva** com apresentação do AgroTax.
+- **Calculadora tributária online** para simulação de operações.
+- **Seleção de produtos** cadastrados no banco de dados.
+- **Cálculo de ICMS, IPI, PIS, COFINS, Funrural e SENAR** conforme as alíquotas cadastradas no sistema.
+- **Seleção do regime tributário**, incluindo Simples Nacional, Lucro Presumido e Lucro Real.
+- **Seleção do tipo de operação**, incluindo compra, venda, importação e exportação.
+- **Exibição do valor estimado de cada tributo**.
+- **Exibição do total de tributos estimado**.
+- **Exibição do valor líquido da operação**.
+- **Exibição da carga tributária percentual**.
+- **Armazenamento das simulações** no banco de dados SQLite.
+- **Formulário de contato** para envio de mensagens.
+- **Validação dos dados enviados pelo formulário**.
+- **Armazenamento dos leads** no banco de dados.
+- **Envio de mensagens por e-mail** utilizando Nodemailer.
+- **API RESTful** para comunicação entre frontend e backend.
+- **Health Check** para verificar o funcionamento da API.
+- **Guia Fiscal** com informações sobre os principais tributos considerados pelo sistema.
 
 ---
 
 ## Tecnologias Utilizadas
 
 ### Backend (API RESTful)
+
 - **Node.js** — Ambiente de execução JavaScript no servidor.
-- **Express.js** — Framework web para rotas e middlewares.
+- **Express.js** — Framework web para criação das rotas e middlewares.
 - **better-sqlite3** — Driver síncrono para banco de dados SQLite.
-- **Helmet** — Middleware de segurança HTTP.
-- **CORS** — Habilitação de Cross-Origin Resource Sharing.
-- **Validator** — Validação e sanitização de dados de entrada.
+- **Helmet** — Middleware utilizado para proteção de cabeçalhos HTTP.
+- **CORS** — Controle de requisições entre diferentes origens.
+- **Validator** — Validação e sanitização dos dados recebidos.
 - **Dotenv** — Gerenciamento de variáveis de ambiente.
+- **Nodemailer** — Envio de mensagens por e-mail.
+- **Path** — Manipulação dos caminhos dos arquivos.
+- **FS** — Verificação e criação da pasta do banco de dados.
 
 ### Frontend (Interface do Usuário)
-- **HTML5 Semântico** — Marcação acessível e estruturada.
-- **Tailwind CSS** — Framework CSS utilitário para design responsivo.
-- **JavaScript ES6+ (Vanilla)** — Lógica do cliente, manipulação do DOM e chamadas assíncronas via `fetch`.
+
+- **HTML5 Semântico** — Estrutura das páginas e dos formulários.
+- **Tailwind CSS** — Framework CSS utilizado para criação da interface responsiva.
+- **JavaScript ES6+ (Vanilla)** — Lógica do cliente, manipulação do DOM e comunicação com a API por meio de `fetch`.
+- **Fetch API** — Comunicação assíncrona entre o frontend e o backend.
+
+### Banco de Dados
+
+- **SQLite** — Banco de dados utilizado para armazenar:
+  - produtos;
+  - simulações;
+  - leads;
+  - informações relacionadas às operações cadastradas.
 
 ---
 
 ## Estrutura do Projeto
 
 ```text
-novictium/
-├── api/                          # Servidor Backend em Node.js
-│   ├── db/                       # Banco de dados SQLite (criado em runtime)
-│   │   └── landing.db            # Arquivo da base de dados local
+agro-tax/
+├── api/                                      # Servidor Backend em Node.js
+│   ├── db/                                   # Banco de dados SQLite
+│   │   └── landing.db                        # Arquivo da base de dados local
+│   │
 │   ├── src/
 │   │   ├── config/
-│   │   │   └── conexaoBanco.js   # Inicialização e conexão do SQLite
+│   │   │   └── conexaoBanco.js               # Conexão e configuração do SQLite
+│   │   │
 │   │   ├── controladores/
-│   │   │   └── leadControlador.js# Regras de negócio da API
+│   │   │   ├── leadControlador.js            # Regras de negócio dos leads
+│   │   │   └── calculadoraControlador.js     # Regras de negócio da calculadora
+│   │   │
 │   │   ├── rotas/
-│   │   │   └── leadRotas.js      # Endpoints da aplicação
+│   │   │   ├── leadRotas.js                  # Rotas relacionadas aos leads
+│   │   │   └── calculadoraRotas.js           # Rotas da calculadora tributária
+│   │   │
 │   │   ├── utilitarios/
-│   │   │   └── validadores.js    # Sanitização e validação dos inputs
-│   │   ├── app.js                # Configuração do Express e middlewares
-│   │   └── server.js             # Inicialização do servidor
-│   ├── .env                      # Variáveis de ambiente
-│   ├── iniciarBanco.js           # Criação da tabela de leads
-│   └── package.json              # Dependências e scripts
+│   │   │   ├── validadores.js                # Validação dos dados recebidos
+│   │   │   ├── calculadoraTributaria.js      # Cálculo dos tributos
+│   │   │   └── email.js                      # Configuração e envio de e-mails
+│   │   │
+│   │   ├── app.js                            # Configuração do Express
+│   │   └── server.js                          # Inicialização do servidor
+│   │
+│   ├── .env                                  # Variáveis de ambiente
+│   ├── iniciarBanco.js                       # Criação/verificação das tabelas
+│   ├── package.json                          # Dependências e scripts
+│   └── package-lock.json                     # Versões das dependências
 │
-├── frontend/                     # Interface Web (Landing Page)
+├── frontend/                                 # Interface Web do AgroTax
 │   ├── css/
-│   │   └── estilo.css            # Estilos adicionais
+│   │   └── estilo.css                        # Estilos adicionais
+│   │
 │   ├── js/
-│   │   └── app.js                # Lógica client-side
-│   └── index.html                # Estrutura visual da Landing Page
+│   │   ├── app.js                            # Lógica do formulário e comunicação com a API
+│   │   └── tailwind.js                       # Arquivo do Tailwind utilizado pelo frontend
+│   │
+│   └── index.html                            # Página principal do AgroTax
 │
-├── .gitignore                    # Arquivos ignorados pelo Git
-└── README.md                     # Este arquivo
-```
-
----
-
-## Modelagem do Banco de Dados (SQLite)
-
-O banco de dados é inicializado automaticamente ao iniciar a aplicação.
-
-### Tabela `leads`
-
-```sql
-CREATE TABLE IF NOT EXISTS leads (
-    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome_completo       TEXT    NOT NULL,
-    email               TEXT    NOT NULL,
-    telefone_whatsapp   TEXT    NOT NULL,
-    mensagem            TEXT    DEFAULT NULL,
-    data_cadastro       TEXT    DEFAULT (datetime('now','localtime')),
-    status_atendimento  TEXT    DEFAULT 'novo'
-                                CHECK(status_atendimento IN ('novo','contatado','convertido','perdido'))
-);
-
-CREATE INDEX IF NOT EXISTS idx_leads_email ON leads(email);
-CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status_atendimento);
-```
-
----
-
-## Endpoints da API
-
-| Método | Endpoint | Descrição | Payload (Body) |
-|---|---|---|---|
-| `GET` | `/` | Página inicial da Landing Page | — |
-| `GET` | `/api/health` | Verificação de saúde da API | — |
-| `POST` | `/api/leads` | Cadastra um novo lead | JSON (nome, email, telefone, mensagem) |
-| `GET` | `/api/leads` | Lista todos os leads cadastrados | — |
-
-### Exemplo de Requisição `POST /api/leads`
-
-**Body (JSON):**
-```json
-{
-  "nome_completo": "Maria Silva",
-  "email": "maria.silva@exemplo.com",
-  "telefone_whatsapp": "(11) 98888-7777",
-  "mensagem": "Gostaria de saber mais sobre tratamento."
-}
-```
-
-**Resposta de Sucesso (HTTP 201):**
-```json
-{
-  "sucesso": true,
-  "mensagem": "Lead cadastrado com sucesso!"
-}
-```
-
-**Resposta de Erro de Validação (HTTP 422):**
-```json
-{
-  "sucesso": false,
-  "mensagem": "E-mail inválido.",
-  "erros": [
-    "Informe um endereço de e-mail válido."
-  ]
-}
-```
-
----
-
-## Como Executar o Projeto
-
-### Pré-requisitos
-- **Node.js** (v18 ou superior) e **npm** instalados.
-- **Git** instalado.
-
-**Para instalar o Node.js e Git no Ubuntu/Debian:**
-```bash
-sudo apt update
-sudo apt install -y nodejs npm git
-```
-
-### Iniciar o Projeto
-
-1. Clone o repositório:
-   ```bash
-   git clone <url-do-repositorio>
-   ```
-
-2. Navegue até a pasta `api` e instale as dependências:
-   ```bash
-   cd novictium/api
-   npm install
-   ```
-
-3. Inicie o servidor:
-   ```bash
-   npm run dev
-   ```
-
-4. Acesse no navegador:
-   - **Landing Page:** [http://localhost:3000/](http://localhost:3000/)
-   - **Health Check:** [http://localhost:3000/api/health](http://localhost:3000/api/health)
-
-### Parar o Servidor
-
-Pressione **`Ctrl` + `C`** no terminal.
-
-Se a porta 3000 estiver ocupada:
-```bash
-sudo fuser -k 3000/tcp
-# ou
-npx kill-port 3000
-```
-
----
-
-## Segurança e Boas Práticas
-
-- **Prepared Statements:** Consultas preparadas via `better-sqlite3` prevenindo ataques de SQL Injection.
-- **Sanitização de Entradas:** Limpeza de dados com a biblioteca `validator` para evitar XSS.
-- **Proteção contra Payload Abusivo:** Middleware configurado com limite de 10KB por requisição.
-- **Respostas Padronizadas:** Códigos HTTP semânticos (200, 201, 400, 422, 500).
-
----
-
-## Licença
-
-Projeto desenvolvido para fins educacionais e acadêmicos. Sinta-se à vontade para utilizar como base para seus próprios aprendizados.
+├── doc/                                      # Documentação do projeto
+│
+├── .gitignore                                # Arquivos ignorados pelo Git
+├── README.md                                 # Documentação principal do projeto
+└── package-lock.json                         # Dependências do projeto raiz
