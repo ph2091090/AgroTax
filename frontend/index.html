@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroTax — Calculadora Tributária do Agronegócio</title>
+  <script src="js/tailwind.js"></script>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#" class="text-2xl font-extrabold text-green-700">
+        Agro<span class="text-emerald-500">Tax</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
+        <a href="#inicio" class="hover:text-green-700 transition">Início</a>
+        <a href="#calculadora" class="hover:text-green-700 transition">Calculadora</a>
+        <a href="#guia" class="hover:text-green-700 transition">Guia Fiscal</a>
+        <a href="#sobre" class="hover:text-green-700 transition">Sobre</a>
+      </nav>
+
+      <a
+        href="#calculadora"
+        class="bg-green-700 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-green-800 transition"
+      >
+        Calcular agora
+      </a>
+    </div>
+  </header>
+
+  <div class="h-16"></div>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="inicio" class="bg-gradient-to-br from-green-50 via-white to-emerald-50 py-20 px-4">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+
+        <div class="flex-1">
+          <span class="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-bold mb-5">
+            Tecnologia para o agronegócio
+          </span>
+
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
+            Simplifique a sua
+            <span class="text-green-700">estimativa tributária</span>
+          </h1>
+
+          <p class="mt-6 text-lg text-gray-600 max-w-2xl">
+            O AgroTax ajuda produtores rurais, cooperativas, contadores e profissionais do agronegócio
+            a estimar a carga tributária de operações agrícolas de forma simples e organizada.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a
+              href="#calculadora"
+              class="inline-block bg-green-700 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-800 transition shadow-lg text-center"
+            >
+              Abrir calculadora
+            </a>
+
+            <a
+              href="#guia"
+              class="inline-block bg-white text-green-700 border border-green-200 px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-50 transition text-center"
+            >
+              Conhecer o guia fiscal
+            </a>
+          </div>
+
+          <p class="mt-5 text-sm text-gray-500">
+            Os resultados são estimativas e não substituem a análise de um contador ou especialista tributário.
+          </p>
+        </div>
+
+        <div class="flex-1 w-full">
+          <div class="bg-white rounded-3xl shadow-xl border border-green-100 p-8 max-w-xl mx-auto">
+            <div class="text-6xl text-center mb-5">🌱</div>
+
+            <h2 class="text-2xl font-bold text-gray-900 text-center">
+              Tributação no agronegócio
+            </h2>
+
+            <p class="text-gray-600 text-center mt-3">
+              Consulte os produtos cadastrados e faça uma simulação de forma rápida.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mt-8">
+              <div class="bg-green-50 rounded-xl p-4 text-center">
+                <p class="text-2xl font-extrabold text-green-700">ICMS</p>
+                <p class="text-sm text-gray-600 mt-1">Estimativa</p>
+              </div>
+
+              <div class="bg-emerald-50 rounded-xl p-4 text-center">
+                <p class="text-2xl font-extrabold text-emerald-700">IPI</p>
+                <p class="text-sm text-gray-600 mt-1">Estimativa</p>
+              </div>
+
+              <div class="bg-lime-50 rounded-xl p-4 text-center">
+                <p class="text-2xl font-extrabold text-lime-700">PIS/COFINS</p>
+                <p class="text-sm text-gray-600 mt-1">Estimativa</p>
+              </div>
+
+              <div class="bg-yellow-50 rounded-xl p-4 text-center">
+                <p class="text-2xl font-extrabold text-yellow-700">Funrural</p>
+                <p class="text-sm text-gray-600 mt-1">Estimativa</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-green-700 font-bold text-sm uppercase tracking-wider">
+            Por que usar o AgroTax?
+          </span>
+
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">
+            Uma forma mais simples de organizar sua estimativa tributária
+          </h2>
+
+          <p class="mt-4 text-gray-600">
+            Reúna os dados da operação e consulte uma estimativa dos principais tributos considerados pelo sistema.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+          <div class="p-7 rounded-2xl bg-green-50 border border-green-100">
+            <div class="text-4xl mb-4">🧮</div>
+            <h3 class="text-xl font-bold text-gray-900">Cálculo simplificado</h3>
+            <p class="mt-3 text-gray-600">
+              Informe os dados da operação e receba o resultado estimado dos tributos cadastrados.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl bg-emerald-50 border border-emerald-100">
+            <div class="text-4xl mb-4">🌾</div>
+            <h3 class="text-xl font-bold text-gray-900">Foco no agronegócio</h3>
+            <p class="mt-3 text-gray-600">
+              O sistema foi pensado para operações envolvendo produtos agrícolas.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl bg-lime-50 border border-lime-100">
+            <div class="text-4xl mb-4">📊</div>
+            <h3 class="text-xl font-bold text-gray-900">Resultado organizado</h3>
+            <p class="mt-3 text-gray-600">
+              Veja os valores individuais, o total estimado e a carga tributária percentual.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculadora -->
+    <section id="calculadora" class="py-20 px-4 bg-gray-100">
+      <div class="max-w-6xl mx-auto">
+
+        <div class="text-center mb-12">
+          <span class="text-green-700 font-bold text-sm uppercase tracking-wider">
+            Calculadora tributária
+          </span>
+
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">
+            Faça sua simulação
+          </h2>
+
+          <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+            Selecione o produto, informe o valor da operação e escolha as opções correspondentes à simulação.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-8">
+
+          <!-- Formulário -->
+          <div class="lg:col-span-3 bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+
+            <form id="formCalculadora" class="space-y-6">
+
+              <div>
+                <label for="produto_id" class="block text-sm font-semibold text-gray-700 mb-2">
+                  Produto
+                </label>
+
+                <select
+                  id="produto_id"
+                  name="produto_id"
+                  required
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                >
+                  <option value="">Carregando produtos...</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="valor_operacao" class="block text-sm font-semibold text-gray-700 mb-2">
+                  Valor da operação
+                </label>
+
+                <input
+                  type="number"
+                  id="valor_operacao"
+                  name="valor_operacao"
+                  min="0.01"
+                  step="0.01"
+                  required
+                  placeholder="Ex.: 10000,00"
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                >
+              </div>
+
+              <div>
+                <label for="regime_tributario" class="block text-sm font-semibold text-gray-700 mb-2">
+                  Regime tributário
+                </label>
+
+                <select
+                  id="regime_tributario"
+                  name="regime_tributario"
+                  required
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                >
+                  <option value="">Selecione</option>
+                  <option value="Simples Nacional">Simples Nacional</option>
+                  <option value="Lucro Presumido">Lucro Presumido</option>
+                  <option value="Lucro Real">Lucro Real</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="tipo_operacao" class="block text-sm font-semibold text-gray-700 mb-2">
+                  Tipo de operação
+                </label>
+
+                <select
+                  id="tipo_operacao"
+                  name="tipo_operacao"
+                  required
+                  class="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                >
+                  <option value="">Selecione</option>
+                  <option value="Compra">Compra</option>
+                  <option value="Venda">Venda</option>
+                  <option value="Importação">Importação</option>
+                  <option value="Exportação">Exportação</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                id="btnCalcular"
+                class="w-full bg-green-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-800 transition flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                <span id="textoBtnCalcular">Calcular tributos</span>
+
+                <span
+                  id="spinnerCalcular"
+                  class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+                ></span>
+              </button>
+
+              <p class="text-xs text-gray-500 text-center">
+                O resultado apresentado é uma estimativa baseada nos dados cadastrados no sistema.
+              </p>
+
+            </form>
+
+          </div>
+
+          <!-- Resultado -->
+          <div class="lg:col-span-2 bg-gray-900 text-white rounded-2xl shadow-lg p-8">
+
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <p class="text-sm text-gray-400">Resultado da simulação</p>
+                <h3 class="text-2xl font-bold mt-1">Resumo tributário</h3>
+              </div>
+
+              <div class="text-3xl">📋</div>
+            </div>
+
+            <div id="resultadoVazio" class="text-gray-400 text-sm">
+              Preencha os dados ao lado e clique em
+              <strong class="text-white">Calcular tributos</strong>.
+            </div>
+
+            <div id="resultadoCalculadora" class="hidden">
+
+              <div class="mb-5">
+                <p class="text-sm text-gray-400">Produto</p>
+                <p id="resultadoProduto" class="font-semibold text-white mt-1">-</p>
+              </div>
+
+              <div class="mb-5">
+                <p class="text-sm text-gray-400">Valor da operação</p>
+                <p id="resultadoValor" class="text-xl font-bold text-white mt-1">R$ 0,00</p>
+              </div>
+
+              <div class="border-t border-gray-700 pt-5 space-y-3">
+
+                <div class="flex justify-between">
+                  <span class="text-gray-400">ICMS</span>
+                  <span id="resultadoIcms" class="font-semibold">R$ 0,00</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-400">IPI</span>
+                  <span id="resultadoIpi" class="font-semibold">R$ 0,00</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-400">PIS</span>
+                  <span id="resultadoPis" class="font-semibold">R$ 0,00</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-400">COFINS</span>
+                  <span id="resultadoCofins" class="font-semibold">R$ 0,00</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Funrural</span>
+                  <span id="resultadoFunrural" class="font-semibold">R$ 0,00</span>
+                </div>
+
+                <div class="flex justify-between">
+                  <span class="text-gray-400">SENAR</span>
+                  <span id="resultadoSenar" class="font-semibold">R$ 0,00</span>
+                </div>
+
+              </div>
+
+              <div class="border-t border-gray-700 mt-6 pt-6 space-y-4">
+
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300 font-semibold">Total de tributos</span>
+                  <span id="resultadoTotal" class="text-xl font-extrabold text-green-400">
+                    R$ 0,00
+                  </span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300 font-semibold">Valor líquido</span>
+                  <span id="resultadoLiquido" class="text-xl font-extrabold text-white">
+                    R$ 0,00
+                  </span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300 font-semibold">Carga tributária</span>
+                  <span id="resultadoCarga" class="text-xl font-extrabold text-yellow-400">
+                    0,00%
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div
+              id="erroCalculadora"
+              class="hidden mt-6 bg-red-500/10 border border-red-400/30 text-red-300 rounded-lg p-4 text-sm"
+            ></div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section class="py-20 px-4 bg-white">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="text-center mb-12">
+          <span class="text-green-700 font-bold text-sm uppercase tracking-wider">
+            Como funciona
+          </span>
+
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">
+            Três passos para fazer uma simulação
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto rounded-full bg-green-100 text-green-700 flex items-center justify-center text-2xl font-extrabold">
+              1
+            </div>
+
+            <h3 class="text-xl font-bold mt-5">Escolha o produto</h3>
+
+            <p class="text-gray-600 mt-3">
+              Selecione um dos produtos disponíveis no sistema.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl font-extrabold">
+              2
+            </div>
+
+            <h3 class="text-xl font-bold mt-5">Informe os dados</h3>
+
+            <p class="text-gray-600 mt-3">
+              Informe o valor da operação, o regime tributário e o tipo de operação.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto rounded-full bg-lime-100 text-lime-700 flex items-center justify-center text-2xl font-extrabold">
+              3
+            </div>
+
+            <h3 class="text-xl font-bold mt-5">Consulte o resultado</h3>
+
+            <p class="text-gray-600 mt-3">
+              Veja a estimativa dos tributos, o total, o valor líquido e a carga tributária.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Guia Fiscal -->
+    <section id="guia" class="py-20 px-4 bg-green-50">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="max-w-3xl">
+          <span class="text-green-700 font-bold text-sm uppercase tracking-wider">
+            Guia Fiscal
+          </span>
+
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">
+            Entenda os principais tributos considerados pelo AgroTax
+          </h2>
+
+          <p class="mt-4 text-gray-600">
+            Consulte informações organizadas sobre os tributos utilizados nas simulações do sistema.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+            <h3 class="text-xl font-bold text-gray-900">ICMS</h3>
+            <p class="mt-3 text-gray-600">
+              Tributo considerado pelo sistema conforme a alíquota cadastrada para o produto.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+            <h3 class="text-xl font-bold text-gray-900">IPI</h3>
+            <p class="mt-3 text-gray-600">
+              Tributo incluído no cálculo quando existir alíquota correspondente cadastrada.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+            <h3 class="text-xl font-bold text-gray-900">PIS e COFINS</h3>
+            <p class="mt-3 text-gray-600">
+              Considerados separadamente na composição da estimativa tributária.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+            <h3 class="text-xl font-bold text-gray-900">Funrural</h3>
+            <p class="mt-3 text-gray-600">
+              Percentual cadastrado para a simulação da operação.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+            <h3 class="text-xl font-bold text-gray-900">SENAR</h3>
+            <p class="mt-3 text-gray-600">
+              Considerado de acordo com o cadastro utilizado pelo sistema.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-green-100">
+            <h3 class="text-xl font-bold text-gray-900">Benefícios fiscais</h3>
+            <p class="mt-3 text-gray-600">
+              O banco de dados possui campos para registrar isenções e benefícios cadastrados.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-20 px-4 bg-white">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="max-w-4xl mx-auto text-center">
+          <span class="text-green-700 font-bold text-sm uppercase tracking-wider">
+            Sobre o projeto
+          </span>
+
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3">
+            AgroTax
+          </h2>
+
+          <p class="mt-5 text-lg text-gray-600">
+            O AgroTax é uma plataforma web criada para auxiliar produtores rurais, cooperativas,
+            contadores e profissionais do agronegócio brasileiro na estimativa da carga tributária
+            de operações envolvendo produtos agrícolas.
+          </p>
+
+          <p class="mt-4 text-gray-600">
+            O projeto reúne uma calculadora tributária, um guia fiscal e uma API responsável pelo
+            processamento das simulações.
+          </p>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+
+          <div class="bg-gray-50 rounded-xl p-5 text-center border border-gray-200">
+            <p class="font-bold text-gray-900">Victor</p>
+            <p class="text-sm text-gray-500 mt-1">Integrante</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-5 text-center border border-gray-200">
+            <p class="font-bold text-gray-900">Pedro</p>
+            <p class="text-sm text-gray-500 mt-1">Integrante</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-5 text-center border border-gray-200">
+            <p class="font-bold text-gray-900">Tauã</p>
+            <p class="text-sm text-gray-500 mt-1">Integrante</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-5 text-center border border-gray-200">
+            <p class="font-bold text-gray-900">Icaro</p>
+            <p class="text-sm text-gray-500 mt-1">Integrante</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-5 text-center border border-gray-200">
+            <p class="font-bold text-gray-900">Henrique</p>
+            <p class="text-sm text-gray-500 mt-1">Integrante</p>
+          </div>
+
+        </div>
+
+        <div class="mt-10 bg-yellow-50 border border-yellow-200 rounded-2xl p-6 max-w-4xl mx-auto">
+          <p class="text-sm text-yellow-900 text-center">
+            <strong>Importante:</strong> os resultados apresentados pelo AgroTax são estimativas
+            e não substituem a análise de um contador ou especialista tributário.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Formulário de contato -->
+    <section id="formulario" class="py-20 px-4 bg-gray-100">
+      <div class="max-w-xl mx-auto">
+
+        <div class="text-center mb-8">
+          <span class="text-green-700 font-bold text-sm uppercase tracking-wider">
+            Entre em contato
+          </span>
+
+          <h2 class="text-3xl font-bold text-gray-900 mt-3">
+            Fale com a equipe AgroTax
+          </h2>
+
+          <p class="text-gray-600 mt-3">
+            Envie uma mensagem para entrar em contato com a equipe do projeto.
+          </p>
+        </div>
+
+        <!-- Mantidos os IDs usados pelo app.js atual -->
+        <form
+          id="formLead"
+          class="bg-white p-8 rounded-2xl shadow-lg space-y-5"
+          novalidate
+        >
+
+          <div>
+            <label
+              for="nome_completo"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Nome completo
+            </label>
+
+            <input
+              type="text"
+              id="nome_completo"
+              name="nome_completo"
+              required
+              minlength="3"
+              maxlength="150"
+              placeholder="Seu nome completo"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
+            >
+          </div>
+
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              E-mail
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="seu@email.com"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
+            >
+          </div>
+
+          <div>
+            <label
+              for="telefone_whatsapp"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Telefone
+            </label>
+
+            <input
+              type="tel"
+              id="telefone_whatsapp"
+              name="telefone_whatsapp"
+              required
+              placeholder="(11) 99999-8888"
+              maxlength="15"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
+            >
+          </div>
+
+          <div>
+            <label
+              for="mensagem"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Mensagem
+            </label>
+
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="4"
+              maxlength="500"
+              placeholder="Digite sua mensagem..."
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            id="btnEnviar"
+            class="w-full bg-green-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-800 transition flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <span id="textoBtn">Enviar mensagem</span>
+
+            <span
+              id="spinnerBtn"
+              class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+            ></span>
+          </button>
+
+          <p class="text-xs text-gray-500 text-center mt-2">
+            Seus dados serão usados apenas para o contato relacionado ao projeto.
+          </p>
+
+        </form>
+
+        <div
+          id="toast"
+          class="fixed bottom-6 right-6 px-6 py-3 rounded-lg shadow-lg text-white font-semibold hidden transition-all duration-300 z-50"
+        ></div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-950 text-gray-400 py-10 px-4">
+
+    <div class="max-w-7xl mx-auto text-center">
+
+      <p class="text-2xl font-extrabold text-white">
+        Agro<span class="text-green-500">Tax</span>
+      </p>
+
+      <p class="text-sm mt-3">
+        Calculadora tributária para operações do agronegócio.
+      </p>
+
+      <p class="text-xs mt-3 text-gray-500">
+        © 2026 AgroTax. Todos os direitos reservados.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <script src="js/app.js"></script>
+
+  <script>
+    const formCalculadora = document.getElementById('formCalculadora')
+    const selectProduto = document.getElementById('produto_id')
+    const btnCalcular = document.getElementById('btnCalcular')
+    const textoBtnCalcular = document.getElementById('textoBtnCalcular')
+    const spinnerCalcular = document.getElementById('spinnerCalcular')
+
+    const resultadoVazio = document.getElementById('resultadoVazio')
+    const resultadoCalculadora = document.getElementById('resultadoCalculadora')
+    const erroCalculadora = document.getElementById('erroCalculadora')
+
+    const resultadoProduto = document.getElementById('resultadoProduto')
+    const resultadoValor = document.getElementById('resultadoValor')
+    const resultadoIcms = document.getElementById('resultadoIcms')
+    const resultadoIpi = document.getElementById('resultadoIpi')
+    const resultadoPis = document.getElementById('resultadoPis')
+    const resultadoCofins = document.getElementById('resultadoCofins')
+    const resultadoFunrural = document.getElementById('resultadoFunrural')
+    const resultadoSenar = document.getElementById('resultadoSenar')
+    const resultadoTotal = document.getElementById('resultadoTotal')
+    const resultadoLiquido = document.getElementById('resultadoLiquido')
+    const resultadoCarga = document.getElementById('resultadoCarga')
+
+    const formatarMoeda = valor => {
+      return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      }).format(Number(valor) || 0)
+    }
+
+    const formatarPercentual = valor => {
+      return `${(Number(valor) || 0).toFixed(2).replace('.', ',')}%`
+    }
+
+    async function carregarProdutos() {
+      try {
+        const resposta = await fetch('/api/produtos')
+        const produtos = await resposta.json()
+
+        selectProduto.innerHTML = '<option value="">Selecione um produto</option>'
+
+        produtos.forEach(produto => {
+          const opcao = document.createElement('option')
+          opcao.value = produto.id
+          opcao.textContent = produto.nome
+          selectProduto.appendChild(opcao)
+        })
+
+        if (produtos.length === 0) {
+          selectProduto.innerHTML = '<option value="">Nenhum produto cadastrado</option>'
+        }
+
+      } catch (erro) {
+        selectProduto.innerHTML = '<option value="">Erro ao carregar produtos</option>'
+      }
+    }
+
+    function mostrarErro(mensagem) {
+      erroCalculadora.textContent = mensagem
+      erroCalculadora.classList.remove('hidden')
+    }
+
+    function limparErro() {
+      erroCalculadora.textContent = ''
+      erroCalculadora.classList.add('hidden')
+    }
+
+    function mostrarCarregando(ativo) {
+      btnCalcular.disabled = ativo
+      spinnerCalcular.classList.toggle('hidden', !ativo)
+      textoBtnCalcular.textContent = ativo
+        ? 'Calculando...'
+        : 'Calcular tributos'
+    }
+
+    formCalculadora.addEventListener('submit', async function (e) {
+      e.preventDefault()
+
+      limparErro()
+      mostrarCarregando(true)
+
+      try {
+        const dados = {
+          produto_id: Number(document.getElementById('produto_id').value),
+          valor_operacao: Number(document.getElementById('valor_operacao').value),
+          regime_tributario: document.getElementById('regime_tributario').value,
+          tipo_operacao: document.getElementById('tipo_operacao').value
+        }
+
+        if (!dados.produto_id) {
+          throw new Error('Selecione um produto.')
+        }
+
+        if (!dados.valor_operacao || dados.valor_operacao <= 0) {
+          throw new Error('Informe um valor de operação válido.')
+        }
+
+        if (!dados.regime_tributario) {
+          throw new Error('Selecione o regime tributário.')
+        }
+
+        if (!dados.tipo_operacao) {
+          throw new Error('Selecione o tipo de operação.')
+        }
+
+        const resposta = await fetch('/api/calcular', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dados)
+        })
+
+        const resultado = await resposta.json()
+
+        if (!resposta.ok) {
+          throw new Error(resultado.erro || 'Não foi possível realizar o cálculo.')
+        }
+
+        resultadoProduto.textContent = resultado.produto || '-'
+        resultadoValor.textContent = formatarMoeda(resultado.valor_operacao)
+
+        resultadoIcms.textContent = formatarMoeda(resultado.icms)
+        resultadoIpi.textContent = formatarMoeda(resultado.ipi)
+        resultadoPis.textContent = formatarMoeda(resultado.pis)
+        resultadoCofins.textContent = formatarMoeda(resultado.cofins)
+        resultadoFunrural.textContent = formatarMoeda(resultado.funrural)
+        resultadoSenar.textContent = formatarMoeda(resultado.senar)
+
+        resultadoTotal.textContent = formatarMoeda(resultado.totalTributos)
+        resultadoLiquido.textContent = formatarMoeda(resultado.valorLiquido)
+        resultadoCarga.textContent = formatarPercentual(resultado.cargaTributaria)
+
+        resultadoVazio.classList.add('hidden')
+        resultadoCalculadora.classList.remove('hidden')
+
+      } catch (erro) {
+        resultadoVazio.classList.remove('hidden')
+        resultadoCalculadora.classList.add('hidden')
+        mostrarErro(erro.message || 'Erro ao realizar o cálculo.')
+      } finally {
+        mostrarCarregando(false)
+      }
+    })
+
+    carregarProdutos()
+  </script>
+
+</body>
+</html>
