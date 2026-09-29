@@ -1,5 +1,5 @@
 // URL base da API (ajuste se necessário)
-const URL_API = 'http://localhost:3000/api'
+const URL_API = '/api'
 
 // Referências do DOM
 const formulario = document.getElementById('formLead')
